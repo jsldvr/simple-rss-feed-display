@@ -70,22 +70,17 @@ $app = [
 
                         // Display each post
                         foreach ($posts as $post) { ?>
+
                         <tr class="post">
                             <td>
                                 <time><?php echo $post['pubDate']; ?></time>
                             </td>
                             <td>
-                                <div class="fw-bold fs-5 mb-2">
-                                    <a href="<?php echo $post['link']; ?>" 
-                                        target="_blank" rel="noopener noreferrer">
-                                        <?php echo $post['title']; ?>
-                                    </a>
-                                </div>
-                                <section>
-                                    <p><?php echo $post['description']; ?></p>
-                                </section>
+                                <div class="fw-bold fs-5 mb-2"><a href="<?php echo $post['link']; ?>" target="_blank" rel="noopener noreferrer"><?php echo $post['title']; ?></a></div>
+                                <section><?php echo $post['description']; ?></section>
                             </td>
                         </tr>
+
                         <?php
                         }
                         ?>

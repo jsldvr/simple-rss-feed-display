@@ -35,7 +35,11 @@ $feedURLs = [
     'https://thehill.com/rss/syndicator/19109',
     'https://feeds.feedburner.com/breitbart',
     'https://www.theblaze.com/rss',
-    'https://thefederalist.com/feed/'
+    'https://thefederalist.com/feed/',
+    'https://www.theepochtimes.com/feed',
+    'https://www.businessinsider.com/rss',
+    'https://www.military.com/rss-feeds/content?keyword=headlines&channel=news&type=news',
+    'https://jonathanturley.org/rss'
 ];
 
 // Array to store all posts
