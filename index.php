@@ -43,6 +43,7 @@ $app = [
             $(document).ready(function() {
                 $('#news-table').DataTable({
                     dom: '<"top"iflp<"clear">>rt<"bottom"iflp<"clear">>',
+                    order: [[0, 'asc']],
                 });
             });
         });
@@ -53,7 +54,7 @@ $app = [
     <div class="container my-5">
         <div class="row">
             <div class="col">
-                <h1><?php echo $app['title']; ?></h1>
+                <h1><a href="./"><?php echo $app['title']; ?></a></h1>
                 <table class="table display " id="news-table" style="width: 100%">
                     <thead>
                         <tr>
