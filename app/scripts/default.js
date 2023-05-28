@@ -11,8 +11,10 @@ fetch('./app/data/posts.json')
 
             const dateElement = document.createElement('td');
             dateElement.innerHTML = post.pubDate;
+            
+            const articleElement = document.createElement("td");
 
-            const titleElement = document.createElement('h3');
+            const titleElement = document.createElement('h4');
             titleElement.textContent = post.title;
 
             const descriptionElement = document.createElement('p');
@@ -22,8 +24,6 @@ fetch('./app/data/posts.json')
             linkElement.href = post.link;
             linkElement.setAttribute("target", "_blank");
             linkElement.textContent = 'Read More';
-
-            const articleElement = document.createElement("td");
 
             articleElement.appendChild(titleElement);
             articleElement.appendChild(descriptionElement);
