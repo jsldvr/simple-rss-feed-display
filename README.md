@@ -60,8 +60,6 @@ Feel free to modify and customize the README.md file to fit your specific projec
 
 Make sure to update the `Getting Started` section with the appropriate steps for running the application in your environment, such as configuring the RSS feed URLs and setting file permissions.
 
-That's it! You now have a GitHub README.md file template for your `rssFeed` project.
-
 ## Author's Note
 
 I simply wanted a script that could help me maintain a news feed that isn’t a highly curated list based on my interests and likes. I enjoy reading all sorts of information throughout the internet. The RSS feeds in this project are left, center and right (and will expand). I believe in the people’s right to free speech and believe all sides should be presented if we want an educated and civil society so that “that government of the people, by the people, for the people, shall not perish from the earth.“ 
