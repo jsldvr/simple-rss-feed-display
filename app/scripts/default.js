@@ -35,7 +35,8 @@ class Build {
             titleLink.setAttribute("target","_blank");
             titleLink.textContent = post.title;
             
-            const titleElement = document.createElement('h4');
+            const titleElement = document.createElement('div');
+            titleElement.classList.add('fw-bold');
             titleElement.appendChild(titleLink);
             
             const descriptionElement = document.createElement('p');
