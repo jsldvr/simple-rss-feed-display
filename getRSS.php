@@ -39,7 +39,10 @@ $feedURLs = [
     'https://www.theepochtimes.com/feed',
     'https://www.businessinsider.com/rss',
     'https://www.military.com/rss-feeds/content?keyword=headlines&channel=news&type=news',
-    'https://jonathanturley.org/rss'
+    'https://jonathanturley.org/rss',
+    'https://rss.nytimes.com/services/xml/rss/nyt/Politics.xml',
+    'https://rss.nytimes.com/services/xml/rss/nyt/Business.xml',
+    'https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml'
 ];
 
 // Array to store all posts
