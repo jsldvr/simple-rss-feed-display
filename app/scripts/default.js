@@ -37,6 +37,7 @@ class Build {
             
             const titleElement = document.createElement('div');
             titleElement.classList.add('fw-bold');
+
             titleElement.appendChild(titleLink);
             
             const descriptionElement = document.createElement('p');
