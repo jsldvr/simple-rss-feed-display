@@ -23,7 +23,7 @@ $app = [
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title><?php echo $app['title']; ?></title>
 
     <link rel="stylesheet" href="app/style/bootstrap.min.css">
@@ -40,20 +40,6 @@ $app = [
             text-decoration: none;
         }
     </style>
-
-    <script src="app/scripts/jquery-3.5.1.js"></script>
-    <script src="app/scripts/bootstrap.bundle.min.js"></script>
-    <script src="app/scripts/datatables.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#news-table').DataTable({
-                dom: '<"top"iflp<"clear">>rt<"bottom"iflp<"clear">>',
-                order: [
-                    [0, 'desc']
-                ],
-            });
-        });
-    </script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-MZSSKV52P7"></script>
     <script>
@@ -76,7 +62,7 @@ $app = [
             </div>
         </div>
     </header>
-    <div class="container py-2">
+    <main class="container py-2">
         <div class="row">
             <div class="col">
                 <table class="table w-100" id="news-table">
@@ -105,10 +91,19 @@ $app = [
                                     <time><?php echo $post['pubDate']; ?></time>
                                 </td>
                                 <td>
-                                    <div class="fw-bold fs-5 mb-2"><a href="<?php echo $post['link']; ?>" target="_blank" rel="noopener noreferrer"><?php echo $post['title']; ?></a></div>
+                                    <div class="fw-bold fs-5 mb-2">
+                                        <a href="<?php echo $post['link']; ?>" target="_blank" rel="noopener noreferrer">
+                                            <?php echo $post['title']; ?>
+                                        </a>
+                                    </div>
                                     <div><?php echo $limitDesc; ?></div>
                                     <div class="text-success-emphasis text-wrap my-3">
                                         <?php echo $post['link'] . "\n"; ?>
+                                    </div>
+                                    <div class="my-3">
+                                        <a class="twitter-share-button btn btn-sm btn-outline-primary" href="https://twitter.com/intent/tweet?text=<?php echo urlencode($post['title']); ?>&url=<?php echo $post['link'] . "\n"; ?>" target="_blank" rel="noopener noreferrer">
+                                            <i class="bi bi-twitter"></i> Tweet
+                                        </a>
                                     </div>
                                 </td>
                             </tr>
@@ -120,10 +115,10 @@ $app = [
                 </table>
             </div>
         </div>
-    </div>
-    <footer class="container">
+    </main>
+    <footer class="container py-2 mb-3">
         <div class="row">
-            <div class="col py-2 mb-3">
+            <div class="col">
                 <p>&copy; 2023. All rights reserved. </p>
                 <p class="fw-bold mt-3">Disclaimer: </p>
                 <p>The information provided on this website is for general informational purposes only. The content displayed here is sourced from various RSS feeds and is subject to change without notice. We make no representations or warranties of any kind, express or implied, about the accuracy, reliability, suitability, or availability of the information contained on this website. </p>
@@ -134,6 +129,19 @@ $app = [
             </div>
         </div>
     </footer>
+    <script src="app/scripts/jquery-3.5.1.js"></script>
+    <script src="app/scripts/bootstrap.bundle.min.js"></script>
+    <script src="app/scripts/datatables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#news-table').DataTable({
+                dom: '<"top"iflp<"clear">>rt<"bottom"iflp<"clear">>',
+                order: [
+                    [0, 'desc']
+                ],
+            });
+        });
+    </script>
 </body>
 
 </html>

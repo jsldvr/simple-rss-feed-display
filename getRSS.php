@@ -8,7 +8,7 @@ function retrieveRSS($url) {
     foreach ($rss->channel->item as $item) {
         $pubDate = date_create((string)$item->pubDate);
         $pubDate->setTimezone(new DateTimeZone('America/Chicago'));
-        $formattedDate = date_format($pubDate, 'F d, Y g:i A T');
+        $formattedDate = date_format($pubDate, 'Y-m-d H:i:s');
 
         $post = [
             'title' => (string)$item->title,
@@ -44,7 +44,8 @@ $feedURLs = [
     'https://rss.nytimes.com/services/xml/rss/nyt/Business.xml',
     'https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml',
     'https://www.thefirearmblog.com/blog/feed/',
-    'https://www.aol.com/rss'
+    'https://www.aol.com/rss',
+    'https://www.newsweek.com/rss'
 ];
 
 // Array to store all posts
