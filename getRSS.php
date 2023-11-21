@@ -1,25 +1,35 @@
 <?php
 
-// Function to retrieve RSS feed and return an array of posts
+/**
+ * Retrieves RSS feed from the specified URL and returns an array of posts.
+ *
+ * @param string $url The URL of the RSS feed.
+ * @return array An array of posts, each containing title, description, link, and publication date.
+ */
 function retrieveRSS($url) {
+    // Retrieve the RSS feed
     $rss = simplexml_load_file($url);
+    // Create an array to store the posts
     $posts = [];
-
+    // Loop through each item in the RSS feed
     foreach ($rss->channel->item as $item) {
+        // Format the publication date
         $pubDate = date_create((string)$item->pubDate);
+        // Set the time zone to Central
         $pubDate->setTimezone(new DateTimeZone('America/Chicago'));
+        // Format the date to YYYY-MM-DD HH:MM:SS
         $formattedDate = date_format($pubDate, 'Y-m-d H:i:s');
-
+        // Create an array to store the post
         $post = [
             'title' => (string)$item->title,
             'description' => (string)$item->description,
             'link' => (string)$item->link,
             'pubDate' => $formattedDate
         ];
-        
+        // Add the post to the array of posts
         $posts[] = $post;
     }
-    
+    // Return the array of posts
     return $posts;
 }
 
@@ -55,6 +65,12 @@ $allPosts = [];
 foreach ($feedURLs as $url) {
     $posts = retrieveRSS($url);
     $allPosts = array_merge($allPosts, $posts);
+}
+
+// check if `app/data/` directory exists
+if (!file_exists('app/data/')) {
+    // if not, create it
+    mkdir('app/data/', 0777, true);
 }
 
 // Save the posts in a JSON file
