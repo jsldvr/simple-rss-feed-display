@@ -8,12 +8,12 @@
 
     <main>
         <!-- News Feed Section -->
-        <section id="news-feed" class="container">
+        <section class="container my-5">
             <div class="row">
                 <div class="col-md-8">
                     <!-- News Articles -->
                     <div class="card mb-3">
-                        <img src="article-image.jpg" class="card-img-top" alt="Article Image">
+                        <!-- <img src="article-image.jpg" class="card-img-top" alt="Article Image"> -->
                         <div class="card-body">
                             <h5 class="card-title">Article Title</h5>
                             <p class="card-text">Article Description</p>
