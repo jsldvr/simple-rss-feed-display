@@ -1,7 +1,10 @@
-<header class="container py-2 mt-3">
-    <div class="row">
-        <div class="col">
-            <h1><a href="./"><i class="bi bi-rss-fill"></i> <?php echo $app['title']; ?></a></h1>
-        </div>
-    </div>
+<header 
+    class="navbar navbar-expand-lg bd-navbar sticky-top">
+    <nav 
+        class="container-xxl bd-gutter flex-wrap flex-lg-nowrap"
+        aria-label="Main navigation">
+        <a class="navbar-brand p-0 me-2" href="/" aria-label="RSS News Feed">
+            <i class="bi bi-rss-fill"></i> 
+        </a>
+    </nav>
 </header>

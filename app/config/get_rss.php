@@ -70,14 +70,12 @@ foreach ($feedURLs as $url) {
 // check if `app/data/` directory exists
 if (!file_exists('app/data/')) {
     // if not, create it
-    mkdir('app/data/', 0777, true);
+    mkdir('../../app/data/', 0777, true);
 }
 
 // Save the posts in a JSON file
 $jsonData = json_encode($allPosts, JSON_PRETTY_PRINT);
-$file = 'app/data/posts.json';
+$file = '../../app/data/posts.json';
 
+// Write the JSON data to the file
 file_put_contents($file, $jsonData);
-
-// echo "RSS feeds retrieved and saved successfully to $file";
-?>

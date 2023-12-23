@@ -1,20 +1,6 @@
 <?php
-
-/**
- * Require the script to refresh the json file.
- */
-require_once('getRSS.php');
-
-/**
- * Set some global params
- */
-$app = [
-    'title' => 'rssNewsFeed'
-];
-
-/**
- * Website HTML
- */
+require_once('app/config/app.php');
+// Config::getRss();
 ?>
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
