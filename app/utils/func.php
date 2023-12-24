@@ -1,0 +1,10 @@
+<?php
+
+/**
+ * Functions
+ */
+
+class Func
+{
+
+}

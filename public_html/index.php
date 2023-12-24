@@ -3,6 +3,9 @@
 /**
  * RSS News Feed Reader
  * 
+ * This is the public entry point for the application. It defines the root dir 
+ * of the project and requires the `../app/load.php` file. 
+ * 
  * @package RSS News Feed Reader
  * @version 1.0.0
  * @link https://github.com/jsldvr/simple-rss-feed-display
@@ -18,5 +21,5 @@ if (!defined('APP_DIR')) {
 require_once APP_DIR . '/app/load.php';
 
 /** Instantiate the `LoadApp` class. */
-$loadApp = new LoadApp;
-$loadApp->Website();
+$website = new Load;
+$website->Init();

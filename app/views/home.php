@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 
 <?php require 'template/head.php'; ?>
 
@@ -10,7 +10,7 @@
         <!-- News Feed Section -->
         <section class="container my-5">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col">
                     <!-- News Articles -->
                     <div class="card mb-3">
                         <!-- <img src="article-image.jpg" class="card-img-top" alt="Article Image"> -->
@@ -18,19 +18,6 @@
                             <h5 class="card-title">Article Title</h5>
                             <p class="card-text">Article Description</p>
                             <a href="#" class="btn btn-primary">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <!-- Sidebar -->
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Popular Articles</h5>
-                            <ul class="list-group">
-                                <li class="list-group-item">Article 1</li>
-                                <li class="list-group-item">Article 2</li>
-                                <li class="list-group-item">Article 3</li>
-                            </ul>
                         </div>
                     </div>
                 </div>

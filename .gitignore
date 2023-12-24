@@ -1,5 +1,6 @@
 # Project specific directories and files
 archive/
+app/data/*
 
 # Ignore linux symbolic links
 *.lnk
