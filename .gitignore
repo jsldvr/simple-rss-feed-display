@@ -1,5 +1,7 @@
 # Project specific directories and files
+public_html/.htaccess
 archive/
+app/data
 app/data/*
 
 # Ignore linux symbolic links

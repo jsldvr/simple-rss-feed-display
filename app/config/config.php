@@ -70,6 +70,33 @@ class Config
             $options_json = json_encode($options, JSON_PRETTY_PRINT);
             file_put_contents($options_file, $options_json);
         }
+
+        /** authors.json */
+        // check if the file exists, if not, create it.
+        $authors_file = APP_DIR . '/app/data/authors.json';
+        if (!file_exists($authors_file)) {
+            $authors = array();
+            $authors_json = json_encode($authors, JSON_PRETTY_PRINT);
+            file_put_contents($authors_file, $authors_json);
+        }
+        // get the rss feeds from the session
+        $authors_rss = $_SESSION['subscriptions'];
+        // if $authors_rss is not empty, add the rss feeds to the authors.json file
+        if (!empty($authors_rss)) {
+            $authors = json_decode(file_get_contents($authors_file), true);
+            foreach ($authors_rss as $author_rss) {
+                $author_fqdn = parse_url($author_rss, PHP_URL_HOST);
+                $authors[] = array(
+                    'author_id' => hash('sha256', $author_rss),
+                    'author_name' => $author_fqdn,
+                    'author_feed' => $author_rss,
+                    'author_created' => date('Y-m-d H:i:s'),
+                    'author_updated' => date('Y-m-d H:i:s')
+                );
+            }
+            $authors_json = json_encode($authors, JSON_PRETTY_PRINT);
+            file_put_contents($authors_file, $authors_json);
+        }
     }
 
     /**

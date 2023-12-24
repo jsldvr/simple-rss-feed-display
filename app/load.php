@@ -19,10 +19,17 @@ class Load
      * 
      * @return void
      */
-    public function Init()
+    public function Init($subscriptions)
     {
         // generate a session id for the user
         session_start();
+
+        // check if $subscriptions is an array and not empty
+        if (!is_array($subscriptions) || empty($subscriptions)) {
+            throw new Exception('No subscriptions found.');
+        }
+        // set the subscriptions
+        $_SESSION['subscriptions'] = $subscriptions;
 
         // try/catch
         try {
