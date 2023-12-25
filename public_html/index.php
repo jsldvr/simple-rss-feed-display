@@ -13,17 +13,17 @@
  */
 
 /** Define the root dir of the project. */
-if (!defined('APP_DIR')) {
-    define('APP_DIR', dirname(__DIR__));
-}
+define('APP_DIR', dirname(__DIR__));
 
-/** 
- * Edit Subscriptions Here! 
- * 
- * START EDITING HERE!
+/**
+ * Array of RSS feed subscriptions.
+ *
+ * This array contains a list of URLs for various RSS feeds that the application subscribes to.
+ * Each URL represents a different news source or category.
+ *
+ * @var array
  */
-
-$subscriptions = [
+$Subscriptions = [
     'https://feeds.feedburner.com/realclearpolitics/qlMj',
     'https://nypost.com/rss',
     'https://rss.politico.com/congress.xml',
@@ -45,13 +45,11 @@ $subscriptions = [
     'https://www.thefirearmblog.com/blog/feed/',
     'https://www.aol.com/rss',
     'https://www.newsweek.com/rss',
-    'https://www.gameinformer.com/news.xml'
+    'https://www.gameinformer.com/news.xml',
+    // add more RSS feed URLs here
 ];
-// STOP EDITING HERE!
 
 /** Require once the `../app/load.php` file. */
 require_once APP_DIR . '/app/load.php';
-
-/** Instantiate the `LoadApp` class. */
-$website = new Load;
-$website->Init($subscriptions);
+$Website = new Load;
+$Website->Init(NULL, NULL, $Subscriptions, NULL, NULL);
