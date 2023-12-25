@@ -12,85 +12,64 @@
 
 class Load
 {
-    /** 
-     * Load the application
-     * 
-     * @return void
-     */
-    public function Init($subscriptions)
+    public function Init($config = NULL, $utils = NULL, $subs = NULL, $ctrl = NULL, $views = NULL)
+    {
+        $this->initSession();
+        try {
+            $this->initConfig($config);
+            $this->initUtils($utils);
+            $this->initModel($subs);
+            $this->initController($ctrl);
+            $this->initView($views);
+        } catch (Exception $e) {
+            // echo $e->getMessage();
+            echo "An error occurred. Please try again later.";
+        }
+    }
+
+    private function initSession()
     {
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
             session_regenerate_id(false);
         }
-        try {
-            $this->Config();
-            $this->Feed($subscriptions);
-            $this->Functions();
-            $this->Website();
-        } catch (Exception $e) {
-            echo $e->getMessage();
-        }
     }
 
-    /** 
-     * Load the configuration dir/files 
-     */
-    public function Config()
+    public function initConfig($conf)
     {
         $this->Require('app/config', 'config');
-
         $config = new Config();
-        $config->Init();
+        $config->Init($conf);
     }
 
-    /**
-     * Sanitize and validate the feed content.
-     * 
-     * Session Data Validation: Storing $subscriptions directly in the session 
-     * without any validation or sanitization could pose a risk, depending on 
-     * how this data is used later.
-     */
-    protected function Feed($subscriptions)
+    public function initUtils($util)
     {
-        // check if $subscriptions is an array and not empty
-        if (!is_array($subscriptions) || empty($subscriptions)) {
-            throw new Exception('No subscriptions found.');
-        }
-        // Review the $subscriptions array and validate each feed url.
-        foreach ($subscriptions as $key => $value) {
-            // check if the feed url is a string
-            if (!is_string($value)) {
-                throw new Exception('Invalid feed url.');
-            }
-            // check if the feed url is a valid url
-            if (!filter_var($value, FILTER_VALIDATE_URL)) {
-                throw new Exception('Invalid feed url.');
-            }
-        }
-        // store the subscriptions in the session
-        $_SESSION['subscriptions'] = $subscriptions;
+        $this->Require('app/utils', 'index');
+        $utils = new AppUtils();
+        $utils->Init($util);
     }
 
-    /**
-     * Loads the necessary functions for the application.
-     */
-    public function Functions()
+    public function initModel($subs)
     {
-        $this->Require('app/utils', 'func');
+        $this->Require('app/models', 'index');
+        $model = new AppModel();
+        $model->Init($subs);
     }
 
-    /** 
-     * Load the  web interface 
-     */
-    public function Website()
+    public function initController($ctrl)
     {
-        $this->Require('app/views', 'home');
+        $this->Require('app/controllers', 'index');
+        $controller = new AppController();
+        $controller->Init($ctrl);
     }
 
-    /**
-     * Safely require a file.
-     */
+    public function initView($views)
+    {
+        $this->Require('app/views', 'index');
+        $views = new AppViews();
+        $views->Init($views);
+    }
+
     public static function Require($directory, $file_name)
     {
         $filePath = APP_DIR . '/' . $directory . '/' . $file_name . '.php';
