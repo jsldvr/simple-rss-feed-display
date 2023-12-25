@@ -1,4 +1,7 @@
+# htaccess
+
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !\.(jpg|jpeg|png|gif|js|css|map)$ [NC]
 RewriteRule ^(.*)$ /index.php [L]

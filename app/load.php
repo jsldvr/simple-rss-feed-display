@@ -3,17 +3,15 @@
 /**
  * Load the website
  * 
- * Loads all necessary files for the website to run. 
+ * Loads all necessary files for the website to run, initializes the Load class, 
+ * and calls the respective methods to load the application.
  * 
  * @package RSS News Feed Reader
  * @version 1.0.0
  */
 
-
-
 class Load
 {
-
     /** 
      * Load the application
      * 
@@ -21,19 +19,13 @@ class Load
      */
     public function Init($subscriptions)
     {
-        // generate a session id for the user
-        session_start();
-
-        // check if $subscriptions is an array and not empty
-        if (!is_array($subscriptions) || empty($subscriptions)) {
-            throw new Exception('No subscriptions found.');
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+            session_regenerate_id(false);
         }
-        // set the subscriptions
-        $_SESSION['subscriptions'] = $subscriptions;
-
-        // try/catch
         try {
             $this->Config();
+            $this->Feed($subscriptions);
             $this->Functions();
             $this->Website();
         } catch (Exception $e) {
@@ -50,6 +42,34 @@ class Load
 
         $config = new Config();
         $config->Init();
+    }
+
+    /**
+     * Sanitize and validate the feed content.
+     * 
+     * Session Data Validation: Storing $subscriptions directly in the session 
+     * without any validation or sanitization could pose a risk, depending on 
+     * how this data is used later.
+     */
+    protected function Feed($subscriptions)
+    {
+        // check if $subscriptions is an array and not empty
+        if (!is_array($subscriptions) || empty($subscriptions)) {
+            throw new Exception('No subscriptions found.');
+        }
+        // Review the $subscriptions array and validate each feed url.
+        foreach ($subscriptions as $key => $value) {
+            // check if the feed url is a string
+            if (!is_string($value)) {
+                throw new Exception('Invalid feed url.');
+            }
+            // check if the feed url is a valid url
+            if (!filter_var($value, FILTER_VALIDATE_URL)) {
+                throw new Exception('Invalid feed url.');
+            }
+        }
+        // store the subscriptions in the session
+        $_SESSION['subscriptions'] = $subscriptions;
     }
 
     /**

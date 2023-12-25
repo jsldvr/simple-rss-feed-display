@@ -44,9 +44,9 @@ $subscriptions = [
     'https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml',
     'https://www.thefirearmblog.com/blog/feed/',
     'https://www.aol.com/rss',
-    'https://www.newsweek.com/rss'
+    'https://www.newsweek.com/rss',
+    'https://www.gameinformer.com/news.xml'
 ];
-
 // STOP EDITING HERE!
 
 /** Require once the `../app/load.php` file. */
