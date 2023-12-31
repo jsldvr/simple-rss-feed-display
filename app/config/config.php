@@ -8,13 +8,6 @@
 
 class Config
 {
-    /** 
-     * Init() and k.i.s.s.
-     * 
-     * The Init() method is used to initialize the application and environment.
-     * 
-     * @return void
-     */
     public function Init()
     {
         $this->SetEnvironment();
@@ -22,15 +15,6 @@ class Config
         $this->AccessLog();
     }
 
-    /** 
-     * SetEnvironment() 
-     * 
-     * Checks if there's an app/data directory and the proper permissions set, if 
-     * not, it creates one and sets the permissions to allow the application to 
-     * write to it. The app will use app/data as a json database.
-     * 
-     * @return void
-     */
     public function SetEnvironment()
     {
         // Define the data directory
@@ -42,13 +26,6 @@ class Config
         }
     }
 
-    /**
-     * SetDatabase()
-     * 
-     * The database is a collection of json files that are used to store data. 
-     * 
-     * @return void
-     */
     public function SetDatabase()
     {
         /** options.json */
@@ -124,17 +101,6 @@ class Config
         }
     }
 
-    /**
-     * AccessLog()
-     * 
-     * Creates the access log file if it doesn't exist and logs PHP access to 
-     * the file for debugging purposes. The access log file is used to log all 
-     * access to the application. This includes the user's IP address, the 
-     * request method, the request URI, the HTTP referer, the user agent, and 
-     * the user language. This information is used to help debug the application.
-     * 
-     * @return void
-     */
     public function AccessLog()
     {
         // Define the access log file
@@ -165,11 +131,6 @@ class Config
         file_put_contents($access_log_file, $access_log_json);
     }
 
-    /**
-     * Sets the session ID if it is not already set.
-     *
-     * @return string The session ID.
-     */
     private function SetSessionId()
     {
         // Check if the session ID is already set
@@ -181,11 +142,6 @@ class Config
         return $_SESSION['session_id'];
     }
 
-    /**
-     * Generates a unique user fingerprint based on user data.
-     *
-     * @return string The generated user fingerprint.
-     */
     private function UserFingerprint()
     {
         // User IP address
